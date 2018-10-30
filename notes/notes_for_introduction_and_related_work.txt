@@ -1,0 +1,176 @@
+favorite guitar player identification
+
+plucking position and spectral envelope
+
+traube limite range of plucking point
+
+how did Jimi Hendrix play the intro to "Hey Joe"...?
+
+
+
+A comprehensive study of guitar controls is described by Scherrer (Scherrer, 2013). In that study, the principles of guitar playing in
+terms of controls are classified into left-hand (fingering) and right-hand (plucking). Fingering determines the pitch, as well as a set of more complex gestures
+such as vibrato, slurs, glissandi or damping. 
+
+The extracted instrumental controls are the plucking instants (i.e. note
+onsets), the fingering (which bones of the left hand fingers are pressing which
+strings and frets), the plucked string the plucking position
+on the string.
+
+The parameters of focus during the plucking process are (a) the plucked string (b) the excitation with nail or flesh and 
+(c) the plucking position. Also plucking velocity and the displacement of the
+string during the pressure stage and the angles of the pluck during the preparation and release stages has an impact (see i.e., "multimodal").
+
+Reported methods in the literature generally focus on the
+estimation of a single parameter or a reduced set of them and methods are
+many times intrusive and multimodal. In this work we are able to extract an exact
+set of control parameters from real recordings by means of a unimodal
+audio capture with no information from video, sound analysis and information from a musical
+score.
+
+The parameters that we obtaing would not be possible if using the Yin method of ....
+The parmetric pitch estimation method can easily be expanded to a multipitch such as [weiss, mgc, kjær], where we claim that the obtained spectral envelope obtained from the plucking model estimate could replace the codebook approach in~[weiss]
+
+The acquisition of control parameters from musical performances is generally
+carried out either directly by measuring with sensors or indirectly by offline
+analysis of an audio signal (P´erez-Carrillo and Wanderley, 2015; Wanderley and
+Depalle, 2004). In the case of the indirect acquisition, di↵erent methods allow
+for the extraction of the plucking position and fingering based on frequencydomain analysis techniques (Traube and Depalle, 2003; Traube and Smith, 2000)
+and time-domain approaches (Penttinen and V¨alim¨aki, 2004).
+
+Other types of measuring techniques can also be found, including methods
+based on capacitive sensing (Guaus and Arcos, 2010) to capture left-hand fingering and indirect acquisition from audio (Penttinen and V¨alim¨aki, 2004; Scherrer
+and Depalle, 2012; Traube and Depalle, 2003; Traube and Smith, 2000). The
+selection of a measuring system is largely determined by the objectives of the
+research. In this work the main objective is to measure hand controls from real
+performances with high accuracy and no (or very low) intrusiveness,
+
+
+
+Modeling timbre variations of a specific musical instrument is an issue of particular importance to musical acoustics, i.e., in synthesis or
+instrument recognition. It is also be useful for other tasks related to Music Information Retrieval (MIR) such as automatic music transcription or source separation.
+
+The case of the guitar is particularly relevant, as guitar has been central to Western music in the recent century, with a wide solo or orchestral repertoire. 
+In this paper, a parametric model which accounts for specifics of both the guitar string type and tuning is proposed. More specifically, the string inharmonicity, hence implicitly, the string length, diameter and material are modeled along the whole pitch range and estimated from monophonic recordings.
+
+
+
+
+Compare with 
+REAL-TIME GUITAR STRING DETECTION FOR MUSIC EDUCATION SOFTWARE (abesser)
+
+
+Automatic String Detection for Bass Guitar and Electric Guitar (abesser)
+
+
+Inharmonicity-Based Method for the Automatic Generation of Guitar Tablature (barbancho et al)
+- assumed f0
+- estimation of inharmonicicty from one fret. HOW EXACTLY? average? 
+- iterative error model
+- chords model - free chords or - reduced computational burden
+- threshold in the fft with freq ranges.
+	* rules on relative peak sizes to detect partail or fundamental
+- experiments
+	* single notes from 0 to 12 th fret with 6 strings
+	* testing with total average coefficients and specific coff estiamates for the guitar.
+	* "power" chords detection
+	* RWC better that own recordings.
+	* + classical guitar.
+100ms for notes and 300 ms for inharmonicity coeffs
+
+
+
+Continue reading the evaluation.....
+
+
+- Traube - three papers
+	- ESTIMATING THE PLUCKING POINT ON A GUITAR STRING
+	relation between fingering candidates. (we use this to make it faster - subtracting from a frequency table)
+	they fix the plucking point position and then they argue that it is possible to use the spectrum for locating the fingering position.
+	compare spectral envelope to their results. use Martin Guitar.
+	assume known fret position and estimate plucking point.	
+
+	- Extraction of the excitation point location on a string using weighted 
+	iterative least-square estimation of a comb filter delay
+	autocorrelation based method.
+	log correlation refinement method.
+	however, peak finding is never discussed ?
+
+	we suggest to estimate pitch as a maximum likelihood... no pealk finding heuristics
+
+
+
+what is difference between string/fret and string/fret/note ?
+
+Mention Zx impementation with an fft see mpe-book by mgc.
+
+
+
+onset detection in abesser - we use MIR toolbox.
+
+
+ - ESTIMATING PICKUP AND PLUCKING POSITIONS OF GUITAR TONES AND CHORDS WITH AUDIO EFFECTS
+	esrtimation of plucking position boxplots.
+
+describe training and also knowing the f0-table from that 
+
+mention the reason for wrapping the strings and that we can turn the string designers problem in to a good thing by using it for identification of strings. 
+
+MOhammad et al. 
+http://www.dafx17.eca.ed.ac.uk/papers/DAFx17_paper_43.pdf
+https://www.eecs.qmul.ac.uk/~simond/pub/2017/MohamadHarteDixon-ICASSP2017.pdf
+
+
+INITIAL CONDITIONS
+How realistic is the D'Alembert plucked string? (Bolwell)
+
+Introduction should mention that pickup placement is another study.
+pitch vs. fundamental frequency.
+
+see also interesting discussion of the stiff string by bilbao: Linear stiff string vibrations in musical acoustics: assessment and
+comparison of models
+
+refer ZTx to noll paper
+
+we are assuming that the pickup is
+
+spectral decay - compare to fast NLS with order estimation.
+-----------------------------------------------------------------------------------------------
+Introduce the paper with:
+importance of the used methods
+
+    - machine learning is hyped
+        - neural networks creates good performance, but results are not traceable.
+        - so much knowledge already exists based of analysis of physical phonemenoms
+    - As we have seen from [a,b,c] parametric descriptions lead to robust estimation and perfectly traceable estimation errors.
+In this paper we furthermore emphasize that such parametric estimation can be expanded and combined such that tablature and plucking position on the single string can be estimated using the proposed method.
+    - expand the harmonic model to allow inharmonicity based on the model derived by Fletcher [e].
+    - The Non linear least square estimator is proposed for the inharmonic guitar string and we propose to use the estimates of the inharmonicity coefficient to classify the finger position on the fret board (the string/fret combination of the played note)
+    - For the string/fret model to be trained, the guitar is only required to play the six strings in one fret and from that the classifier is able to identify the finger position with an accuracy of 100% on the Martin acoustic and 97.5 % on a Gibson Freibrand on average.
+
+ simple estimator design and a classifier based only on the pitch and pitch estimates.
+ 
+ partial amplitudes
+
+    - parametric decsriptions based on physics
+    - model based estimation
+    - pitch robust to noise and shown to reach CRLB.
+   
+
+A time-domain approach to estimating the plucking point of guitar tones obtained with an under-saddle pickup
+    - the fast method requiees an undersaddle pickup
+    - plucking point is resembled by the first negative peak in the autocorrelation function
+    - an autocorretation estimator and extracting one period
+    - finger position is assumed known (tjek results and discussion)
+
+Partials that gains energy gives it back (fluctuates)
+	-  end  supports  has  finite  mechanical  admittance  if there is to be any mode coupling
+	- K. A. Legge and N. H. Fletcher  shows that modes absent from the initial excitation of the string can be driven to appreciable amplitude by these mechanisms, reaching their maximum amplitude after a time typically of order 0.1 s.
+	- Modes that are inharmonic giver rise to rapid amplitude fluctuations.
+
+
+Pitch versus f0
+	- relate to some interesting from pitch perception.
+
+
+

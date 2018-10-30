@@ -1,0 +1,17 @@
+
+%%
+E = 82.41312312343412341234231;
+
+frequencyReference = [E E*2^(5/12) E*2^(10/12) E*2^(15/12) E*2^(19/12) E*2^(24/12)]';
+equally_tempered_Matrix = frequencyReference([1:6])*2.^([0:12]/12);
+
+F=1./abs(equally_tempered_Matrix-111)
+
+prior = F./sum(sum(F))
+
+
+figure; 
+surf(prior);
+xlabel('Fret index');
+ylabel('String index');
+zlabel('probability');
